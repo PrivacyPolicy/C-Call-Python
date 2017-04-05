@@ -1,4 +1,4 @@
-__name__ = "multiply"
+#__name__ = "multiply"
 
 def multiply(a, b):
     print"Will compute", a, "times", b;

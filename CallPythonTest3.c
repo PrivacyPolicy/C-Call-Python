@@ -10,11 +10,14 @@ int main(int argc, char* argv[])
     fprintf(stderr, "Usage: call pythonfile funcname [args]\n");
     return 1;
   }
-
+  
+  //Py_SetPythonHome("~/Desktop/CallPythonTest/sentimentweb/");
   Py_Initialize();
   // Refer to local file, not python module
   PyRun_SimpleString("import sys");
   PyRun_SimpleString("sys.path.append(\".\")");
+  PyRun_SimpleString("from sentimentweb.info import feature_selection_trials, MyDict, classify2");
+  //PySys_SetPath(".");
 
   pName = PyString_FromString(argv[1]);
   // error checking should occur
@@ -24,13 +27,13 @@ int main(int argc, char* argv[])
 
   if (pModule != NULL) {
     pFunc = PyObject_GetAttrString(pModule, argv[2]);
-    fprintf(stdout, "Apparantly, the function is called %s\n", argv[2]);
+    //fprintf(stdout, "Apparantly, the function is called %s\n", argv[2]);
     // pFunc is a new reference
 
     if (pFunc && PyCallable_Check(pFunc)) {
       pArgs = PyTuple_New(argc - 3);
       for (i = 0; i < argc - 3; ++i) {
-        pValue = PyInt_FromLong(atoi(argv[i + 3]));
+        pValue = PyString_FromString(argv[i + 3]);
         if (!pValue) {
           Py_DECREF(pArgs);
           Py_DECREF(pModule);
