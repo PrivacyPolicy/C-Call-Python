@@ -12,6 +12,10 @@ int main(int argc, char* argv[])
   }
 
   Py_Initialize();
+  // Refer to local file, not python module
+  PyRun_SimpleString("import sys");
+  PyRun_SimpleString("sys.path.append(\".\")");
+
   pName = PyString_FromString(argv[1]);
   // error checking should occur
 
