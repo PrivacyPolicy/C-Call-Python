@@ -8,3 +8,8 @@ gcc CallPythonTest.c -lpython2.7 -I/usr/include/python2.7 -o CallPythonTest
 
 # Run
 ./CallPythonTest2 multiply multiply 3 2
+
+
+
+# Install sentiment analysis library
+git clone https://github.com/vivekn/sentiment-web
